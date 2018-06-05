@@ -1,11 +1,13 @@
 #!/bin/bash
 . ./res/logo.txt
 . ./res/hangmanProp.txt
+
 #--loadINit
 #killall play
 logoHangMan
 #--FinInit
-#PreGameInit
+
+#--PreGameInit
 printf "\n\t\tPresiona 1 para empezar\n"
 while true; do
 	read -rsn1 input
@@ -13,7 +15,8 @@ while true; do
 		break;
 	fi
 done
-#finInit
+#--finInit
+
 #--gameInit
 propHangMan
 #cat ./res/hangmanProp.txt
