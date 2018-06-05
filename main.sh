@@ -1,9 +1,13 @@
 #!/bin/bash
+. ./res/login.sh
 . ./res/logo.txt
 . ./res/hangmanProp.txt
 
 #--loadINit
 #killall play
+while true;do
+    login
+done
 logoHangMan
 #--FinInit
 
