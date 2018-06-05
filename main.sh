@@ -1,23 +1,19 @@
 #!/bin/bash
-
+. ./res/logo.txt
+. ./res/hangmanProp.txt
 #--loadINit
 #killall play
-#cat ./res/logo.txt
-   # DATA[0]=" #     #    #    #     #  #####  #     #    #    #     #"
-    #DATA[1]=" #     #   # #   ##    # #     # ##   ##   # #   ##    #"
-    #DATA[2]=" #     #  #   #  # #   # #       # # # #  #   #  # #   #"
-    #DATA[3]=" ####### #     # #  #  # #  #### #  #  # #     # #  #  #"
-    #DATA[4]=" #     # ####### #   # # #     # #     # ####### #   # #"
-    #DATA[5]=" #     # #     # #    ## #     # #     # #     # #    ##"
-    #DATA[6]=" #     # #     # #     #  #####  #     # #     # #     #"
-    #printf '%s\n' "${DATA[@]}"
-cat ./res/logo.txt
-cat ./res/hangmanProp.txt
-(play -q ./res/backMusic.mp3 -V0) &
+logoHangMan
+propHangMan
+#cat ./res/hangmanProp.txt
+(play -q ./res/backMusic.mp3 -V0 -R) &
 
 #--FinInit
 
 #--gameInit
+echo "_ _ _ _ _ _ _ _ _ _"
+echo  
+echo "q para salir"
 while true; do
 	read -rsn1 input
 	if [ "$input" = "q" ]; then
@@ -29,4 +25,4 @@ done
 #--FinINit
 
 #Word
-echo "__________"   
+
