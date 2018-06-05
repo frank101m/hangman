@@ -4,16 +4,23 @@
 #--loadINit
 #killall play
 logoHangMan
+#--FinInit
+#PreGameInit
+printf "\n\t\tPresiona 1 para empezar\n"
+while true; do
+	read -rsn1 input
+	if [ "$input" = "1" ]; then
+		break;
+	fi
+done
+#finInit
+#--gameInit
 propHangMan
 #cat ./res/hangmanProp.txt
 (play -q ./res/backMusic.mp3 -V0 -R) &
-
-#--FinInit
-
-#--gameInit
 echo "_ _ _ _ _ _ _ _ _ _"
 echo  
-echo "q para salir"
+printf "\n\t\tq para salir\n"
 while true; do
 	read -rsn1 input
 	if [ "$input" = "q" ]; then
