@@ -24,7 +24,7 @@ done
 #--gameInit
 propHangMan
 #cat ./res/hangmanProp.txt
-(play -q ./res/backMusic.mp3 -V0 -R) &
+(play -q ./res/backMusic.wav -V0 repeat 4294967294) &
 echo "_ _ _ _ _ _ _ _ _ _"
 echo  
 printf "\n\t\tq para salir\n"
