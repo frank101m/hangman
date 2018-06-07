@@ -5,8 +5,10 @@ password=" "
 
 function login(){
 	#clear
+	echo "==============================================="
 	read -p "	Ingrese su usuario: " username
-	read -p "	Ingrese password: " password
+	read -s -p "	Ingrese password: " password
+	echo "==============================================="
 	isUserInDB
 }
 
@@ -18,7 +20,7 @@ function isUserInDB(){
 	    user+=$piece
     done	
     if [ -z $user ]; then
-        echo "malo we"
+        echo -e "	Usuario no encontrado\n"
 	    #clear
     else
 	    clear
