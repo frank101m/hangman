@@ -1,0 +1,1 @@
+psql codigoabierto < codigoabierto.sql
