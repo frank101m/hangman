@@ -23,8 +23,9 @@ function isUserInDB(){
         echo -e "	Usuario no encontrado\n"
 	    #clear
     else
-	    clear
-	    printf "		Bienvenido \033[0;31m$username\033[0m\n"
+	clear
+	#Showing connected user and changing to coloured username
+	printf "		Bienvenido \033[0;31m$username\033[0m\n"
         break;
     fi
 }

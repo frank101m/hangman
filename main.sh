@@ -24,14 +24,14 @@ done
 #--gameInit
 propHangMan
 #cat ./res/hangmanProp.txt
-(play -q ./res/backMusic.wav -V0 repeat 4294967294) &
+#(play -q ./res/backMusic.wav -V0 repeat 4294967294) &
 echo "_ _ _ _ _ _ _ _ _ _"
 echo  
 printf "\n\t\tq para salir\n"
 while true; do
 	read -rsn1 input
 	if [ "$input" = "q" ]; then
-		killall play
+		#killall play
     		echo "Fin Juego"
 		break;
 	fi
