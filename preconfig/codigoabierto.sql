@@ -30,24 +30,36 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: t_score; Type: TABLE; Schema: public; Owner: root; Tablespace: 
+-- Name: login; Type: TABLE; Schema: public; Owner: root; Tablespace: 
 --
 
-CREATE TABLE t_score (
-    id integer NOT NULL,
-    score integer NOT NULL,
-    register_date date NOT NULL,
-    u_id integer
+CREATE TABLE login (
+    usr character varying(15) NOT NULL,
+    pwd character varying(50) NOT NULL
 );
 
 
-ALTER TABLE t_score OWNER TO root;
+ALTER TABLE login OWNER TO root;
 
 --
--- Name: t_score_id_seq; Type: SEQUENCE; Schema: public; Owner: root
+-- Name: palabra; Type: TABLE; Schema: public; Owner: root; Tablespace: 
 --
 
-CREATE SEQUENCE t_score_id_seq
+CREATE TABLE palabra (
+    id_palabra integer NOT NULL,
+    palabra character varying(25) NOT NULL,
+    puntos integer NOT NULL,
+    usr character varying(15)
+);
+
+
+ALTER TABLE palabra OWNER TO root;
+
+--
+-- Name: palabra_id_palabra_seq; Type: SEQUENCE; Schema: public; Owner: root
+--
+
+CREATE SEQUENCE palabra_id_palabra_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -55,33 +67,33 @@ CREATE SEQUENCE t_score_id_seq
     CACHE 1;
 
 
-ALTER TABLE t_score_id_seq OWNER TO root;
+ALTER TABLE palabra_id_palabra_seq OWNER TO root;
 
 --
--- Name: t_score_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
+-- Name: palabra_id_palabra_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
 --
 
-ALTER SEQUENCE t_score_id_seq OWNED BY t_score.id;
+ALTER SEQUENCE palabra_id_palabra_seq OWNED BY palabra.id_palabra;
 
 
 --
--- Name: t_user; Type: TABLE; Schema: public; Owner: root; Tablespace: 
+-- Name: palabra_x_puntaje; Type: TABLE; Schema: public; Owner: root; Tablespace: 
 --
 
-CREATE TABLE t_user (
-    id integer NOT NULL,
-    username character varying(10) NOT NULL,
-    password character varying(8) NOT NULL
+CREATE TABLE palabra_x_puntaje (
+    correl integer NOT NULL,
+    id_palabra integer,
+    id_puntaje integer
 );
 
 
-ALTER TABLE t_user OWNER TO root;
+ALTER TABLE palabra_x_puntaje OWNER TO root;
 
 --
--- Name: t_user_id_seq; Type: SEQUENCE; Schema: public; Owner: root
+-- Name: palabra_x_puntaje_correl_seq; Type: SEQUENCE; Schema: public; Owner: root
 --
 
-CREATE SEQUENCE t_user_id_seq
+CREATE SEQUENCE palabra_x_puntaje_correl_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -89,34 +101,34 @@ CREATE SEQUENCE t_user_id_seq
     CACHE 1;
 
 
-ALTER TABLE t_user_id_seq OWNER TO root;
+ALTER TABLE palabra_x_puntaje_correl_seq OWNER TO root;
 
 --
--- Name: t_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
+-- Name: palabra_x_puntaje_correl_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
 --
 
-ALTER SEQUENCE t_user_id_seq OWNED BY t_user.id;
+ALTER SEQUENCE palabra_x_puntaje_correl_seq OWNED BY palabra_x_puntaje.correl;
 
 
 --
--- Name: t_word; Type: TABLE; Schema: public; Owner: root; Tablespace: 
+-- Name: puntaje; Type: TABLE; Schema: public; Owner: root; Tablespace: 
 --
 
-CREATE TABLE t_word (
-    id integer NOT NULL,
-    word character varying(15) NOT NULL,
-    length integer NOT NULL,
-    u_id integer
+CREATE TABLE puntaje (
+    id_puntaje integer NOT NULL,
+    puntaje integer NOT NULL,
+    usr character varying(15),
+    fecha timestamp without time zone NOT NULL
 );
 
 
-ALTER TABLE t_word OWNER TO root;
+ALTER TABLE puntaje OWNER TO root;
 
 --
--- Name: t_word_id_seq; Type: SEQUENCE; Schema: public; Owner: root
+-- Name: puntaje_id_puntaje_seq; Type: SEQUENCE; Schema: public; Owner: root
 --
 
-CREATE SEQUENCE t_word_id_seq
+CREATE SEQUENCE puntaje_id_puntaje_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -124,119 +136,155 @@ CREATE SEQUENCE t_word_id_seq
     CACHE 1;
 
 
-ALTER TABLE t_word_id_seq OWNER TO root;
+ALTER TABLE puntaje_id_puntaje_seq OWNER TO root;
 
 --
--- Name: t_word_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
+-- Name: puntaje_id_puntaje_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
 --
 
-ALTER SEQUENCE t_word_id_seq OWNED BY t_word.id;
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: root
---
-
-ALTER TABLE ONLY t_score ALTER COLUMN id SET DEFAULT nextval('t_score_id_seq'::regclass);
+ALTER SEQUENCE puntaje_id_puntaje_seq OWNED BY puntaje.id_puntaje;
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: root
+-- Name: id_palabra; Type: DEFAULT; Schema: public; Owner: root
 --
 
-ALTER TABLE ONLY t_user ALTER COLUMN id SET DEFAULT nextval('t_user_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: root
---
-
-ALTER TABLE ONLY t_word ALTER COLUMN id SET DEFAULT nextval('t_word_id_seq'::regclass);
+ALTER TABLE ONLY palabra ALTER COLUMN id_palabra SET DEFAULT nextval('palabra_id_palabra_seq'::regclass);
 
 
 --
--- Data for Name: t_score; Type: TABLE DATA; Schema: public; Owner: root
+-- Name: correl; Type: DEFAULT; Schema: public; Owner: root
 --
 
-COPY t_score (id, score, register_date, u_id) FROM stdin;
+ALTER TABLE ONLY palabra_x_puntaje ALTER COLUMN correl SET DEFAULT nextval('palabra_x_puntaje_correl_seq'::regclass);
+
+
+--
+-- Name: id_puntaje; Type: DEFAULT; Schema: public; Owner: root
+--
+
+ALTER TABLE ONLY puntaje ALTER COLUMN id_puntaje SET DEFAULT nextval('puntaje_id_puntaje_seq'::regclass);
+
+
+--
+-- Data for Name: login; Type: TABLE DATA; Schema: public; Owner: root
+--
+
+COPY login (usr, pwd) FROM stdin;
+Luis	root
+Francisco	root
+Gabriel	root
+Jonathan	root
 \.
 
 
 --
--- Name: t_score_id_seq; Type: SEQUENCE SET; Schema: public; Owner: root
+-- Data for Name: palabra; Type: TABLE DATA; Schema: public; Owner: root
 --
 
-SELECT pg_catalog.setval('t_score_id_seq', 1, false);
-
-
---
--- Data for Name: t_user; Type: TABLE DATA; Schema: public; Owner: root
---
-
-COPY t_user (id, username, password) FROM stdin;
+COPY palabra (id_palabra, palabra, puntos, usr) FROM stdin;
 \.
 
 
 --
--- Name: t_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: root
+-- Name: palabra_id_palabra_seq; Type: SEQUENCE SET; Schema: public; Owner: root
 --
 
-SELECT pg_catalog.setval('t_user_id_seq', 1, false);
+SELECT pg_catalog.setval('palabra_id_palabra_seq', 1, false);
 
 
 --
--- Data for Name: t_word; Type: TABLE DATA; Schema: public; Owner: root
+-- Data for Name: palabra_x_puntaje; Type: TABLE DATA; Schema: public; Owner: root
 --
 
-COPY t_word (id, word, length, u_id) FROM stdin;
+COPY palabra_x_puntaje (correl, id_palabra, id_puntaje) FROM stdin;
 \.
 
 
 --
--- Name: t_word_id_seq; Type: SEQUENCE SET; Schema: public; Owner: root
+-- Name: palabra_x_puntaje_correl_seq; Type: SEQUENCE SET; Schema: public; Owner: root
 --
 
-SELECT pg_catalog.setval('t_word_id_seq', 1, false);
-
-
---
--- Name: t_score_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
---
-
-ALTER TABLE ONLY t_score
-    ADD CONSTRAINT t_score_pkey PRIMARY KEY (id);
+SELECT pg_catalog.setval('palabra_x_puntaje_correl_seq', 1, false);
 
 
 --
--- Name: t_user_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Data for Name: puntaje; Type: TABLE DATA; Schema: public; Owner: root
 --
 
-ALTER TABLE ONLY t_user
-    ADD CONSTRAINT t_user_pkey PRIMARY KEY (id);
-
-
---
--- Name: t_word_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
---
-
-ALTER TABLE ONLY t_word
-    ADD CONSTRAINT t_word_pkey PRIMARY KEY (id);
+COPY puntaje (id_puntaje, puntaje, usr, fecha) FROM stdin;
+\.
 
 
 --
--- Name: t_score_u_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+-- Name: puntaje_id_puntaje_seq; Type: SEQUENCE SET; Schema: public; Owner: root
 --
 
-ALTER TABLE ONLY t_score
-    ADD CONSTRAINT t_score_u_id_fkey FOREIGN KEY (u_id) REFERENCES t_user(id);
+SELECT pg_catalog.setval('puntaje_id_puntaje_seq', 1, false);
 
 
 --
--- Name: t_word_u_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+-- Name: login_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
 --
 
-ALTER TABLE ONLY t_word
-    ADD CONSTRAINT t_word_u_id_fkey FOREIGN KEY (u_id) REFERENCES t_user(id);
+ALTER TABLE ONLY login
+    ADD CONSTRAINT login_pkey PRIMARY KEY (usr);
+
+
+--
+-- Name: palabra_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+--
+
+ALTER TABLE ONLY palabra
+    ADD CONSTRAINT palabra_pkey PRIMARY KEY (id_palabra);
+
+
+--
+-- Name: palabra_x_puntaje_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+--
+
+ALTER TABLE ONLY palabra_x_puntaje
+    ADD CONSTRAINT palabra_x_puntaje_pkey PRIMARY KEY (correl);
+
+
+--
+-- Name: puntaje_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+--
+
+ALTER TABLE ONLY puntaje
+    ADD CONSTRAINT puntaje_pkey PRIMARY KEY (id_puntaje);
+
+
+--
+-- Name: palabra_usr_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+--
+
+ALTER TABLE ONLY palabra
+    ADD CONSTRAINT palabra_usr_fkey FOREIGN KEY (usr) REFERENCES login(usr);
+
+
+--
+-- Name: palabra_x_puntaje_id_palabra_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+--
+
+ALTER TABLE ONLY palabra_x_puntaje
+    ADD CONSTRAINT palabra_x_puntaje_id_palabra_fkey FOREIGN KEY (id_palabra) REFERENCES palabra(id_palabra);
+
+
+--
+-- Name: palabra_x_puntaje_id_puntaje_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+--
+
+ALTER TABLE ONLY palabra_x_puntaje
+    ADD CONSTRAINT palabra_x_puntaje_id_puntaje_fkey FOREIGN KEY (id_puntaje) REFERENCES puntaje(id_puntaje);
+
+
+--
+-- Name: puntaje_usr_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+--
+
+ALTER TABLE ONLY puntaje
+    ADD CONSTRAINT puntaje_usr_fkey FOREIGN KEY (usr) REFERENCES login(usr);
 
 
 --
@@ -252,4 +300,5 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 --
 -- PostgreSQL database dump complete
 --
+
 

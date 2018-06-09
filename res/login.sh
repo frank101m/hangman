@@ -4,16 +4,15 @@ username=" "
 password=" "
 
 function login(){
-	#clear
 	echo "==============================================="
 	read -p "	Ingrese su usuario: " username
 	read -s -p "	Ingrese password: " password
-	echo "==============================================="
+	printf "\n"
 	isUserInDB
 }
 
 function isUserInDB(){
-    read -ra results <<< $(sudo -u postgres -H -- psql -d codigoabierto -c "SELECT * from t_user where name='$username' and password='$password'" -t)
+    read -ra results <<< $(sudo -u postgres -H -- psql -d codigoabierto -c "SELECT * from login where usr='$username' and pwd='$password'" -t)
     user="" 
     for piece in "${results[@]}"
     do
@@ -21,16 +20,12 @@ function isUserInDB(){
     done	
     if [ -z $user ]; then
         echo -e "	Usuario no encontrado\n"
-	    #clear
     else
-	clear
-	#Showing connected user and changing to coloured username
-	printf "		Bienvenido \033[0;31m$username\033[0m\n"
+		clear
+		#Showing connected user and changing to coloured username
+		printf "		Bienvenido \033[0;31m$username\033[0m\n"
         break;
     fi
 }
-#while true; do
-#    login
-#done
 
 export -f login
