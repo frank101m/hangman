@@ -1,5 +1,4 @@
 #!/bin/bash
-
 username=" "
 password=" "
 
@@ -23,7 +22,7 @@ function isUserInDB(){
     else
 		clear
 		#Showing connected user and changing to coloured username
-		printf "		Bienvenido \033[0;31m$username\033[0m\n"
+		printf "		Bienvenido \033[0;36m$username\033[0m\n"
         break;
     fi
 }
