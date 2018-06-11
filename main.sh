@@ -10,22 +10,25 @@ mainOptionInput=""
 playOptionInput=""
 
 function initGame(){
-	mainMenu
-	#Input evaluation. 1- Play, 2 - Sign up, 3 - Exit .
-	case $mainOptionInput in
-		"1")
-			while true;do
-				login
-			done
-			playerManagement #Contains player submenu, input options and play method. 
-			;;
-		"2")
-			register #Available in res/register.sh
-			;;
-		"3")
-			printf "\n\n		\033[1;31mSaliendo...\033[0m\n\n"
-			;;
-	esac
+    while true; do
+	    mainMenu
+	    #Input evaluation. 1- Play, 2 - Sign up, 3 - Exit .
+	    case $mainOptionInput in
+		    "1")
+			    while true;do
+				    login
+			    done
+			    playerManagement #Contains player submenu, input options and play method. 
+			    ;;
+		    "2")
+			    register #Available in res/register.sh
+			    ;;
+		    "3")
+			    printf "\n\n		\033[1;31mSaliendo...\033[0m\n\n"
+                exit
+			    ;;
+	    esac
+    done
 }
 
 #Contains player submenu, input options and play method 
@@ -62,6 +65,7 @@ function mainMenu(){
 	#Menu display
 	clear
 	logoHangMan
+    initLogin
 	getMainMenuOption
 }
 

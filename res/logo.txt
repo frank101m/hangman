@@ -14,10 +14,6 @@ logoHangMan() {
     DATA[11]="                Garcia, Gabriel"
     DATA[12]="                Perez, Francisco"
     DATA[13]="*******************************************************"
-    DATA[14]="               (1) Login"
-    DATA[15]="               (2) Registrarse"
-    DATA[16]="               (3) Salir"
-    DATA[17]=""
     
     printf '%s\n' "${DATA[@]}"
     unset DATA
