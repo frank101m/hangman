@@ -1,8 +1,21 @@
 #!/bin/bash
 username=" "
 password=" "
+$currentState="loginState"
+
+# trap ctrl-c and call ctrl_c()
+trap ctrl_c INT
+
+function ctrl_c() {
+    if [ "$currentState" = "loginState" ]
+    then
+        echo "Regresando al menu"
+    fi
+    exit
+}
 
 function login(){
+    currentState="loginState"
 	echo "==============================================="
 	read -p "	Ingrese su usuario: " username
 	read -s -p "	Ingrese password: " password

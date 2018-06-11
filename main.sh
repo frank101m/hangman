@@ -1,4 +1,5 @@
 #!/bin/bash
+export currentState="menuState"
 . ./res/login.sh
 . ./res/register.sh
 . ./res/wordManagement.sh
@@ -7,7 +8,6 @@
 
 mainOptionInput=""
 playOptionInput=""
-
 
 function initGame(){
 	mainMenu
