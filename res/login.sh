@@ -1,6 +1,10 @@
 #!/bin/bash
+
+. ./stroke_in.sh
+
 username=" "
 password=" "
+valid="abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ_."
 $currentState="loginState"
 
 # trap ctrl-c and call ctrl_c()
@@ -16,8 +20,8 @@ function ctrl_c() {
 
 function login(){
     currentState="loginState"
-	echo "==============================================="
-	read -p "	Ingrese su usuario: " username
+	printf "*******************************************************\n"
+    read -p "       Ingrese usuario: " username
 	read -s -p "	Ingrese password: " password
 	printf "\n"
 	isUserInDB
@@ -35,7 +39,6 @@ function isUserInDB(){
     else
 		clear
 		#Showing connected user and changing to coloured username
-		printf "		Bienvenido \033[0;36m$username\033[0m\n"
         break;
     fi
 }
