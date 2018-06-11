@@ -18,7 +18,7 @@ function initGame(){
 			    while true;do
 				    login
 			    done
-			    playerManagement #Contains player submenu, input options and play method. 
+			    #playerManagement #Contains player submenu, input options and play method. 
 			    ;;
 		    "2")
 			    register #Available in res/register.sh
@@ -72,7 +72,7 @@ function mainMenu(){
 function getMainMenuOption(){
 	#Validating input so that it works only with 1,2, or 3 keypresses.
 	while true; do
-		read -rsn1 -p "	Seleccione una opcion: " mainOptionInput
+		read -rn1 -p "	Seleccione una opcion: " mainOptionInput
 		printf "\n"
 		if [ "$mainOptionInput" = "1" ] || 
 			[ "$mainOptionInput" = "2" ] || 
@@ -85,7 +85,7 @@ function getMainMenuOption(){
 function getPlayMenuOption(){
 	#Validating input so that it works only with 1,2, 3 or 4 keypresses.
 	while true; do
-		read -rsn1 -p "	Seleccione una opcion: " playOptionInput
+		read -rn1 -p "	Seleccione una opcion: " playOptionInput
 		printf "\n"
 		if [ "$playOptionInput" = "1" ] || 
 			[ "$playOptionInput" = "2" ] || 

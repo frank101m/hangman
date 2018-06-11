@@ -8,18 +8,18 @@ valid="abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ_."
 $currentState="loginState"
 
 # trap ctrl-c and call ctrl_c()
-#trap ctrl_c INT
+trap ctrl_c INT
 
 function ctrl_c() {
-    #if [ "$currentState" = "loginState" ]
-    #then
+    if [ "$currentState" = "loginState" ]
+    then
         #initLogin
         #getPlayMenuOption
- break
-        #currentState="menuState"
+        break
+        currentState="menuState"
         #exit
-    #fi
-    #exit
+    fi
+    exit
 }
 
 function initLogin(){
@@ -33,7 +33,7 @@ function initLogin(){
 }
 
 function login(){
-    initLogin
+    #initLogin
     currentState="loginState"
 	printf "*******************************************************\n"
     read -p "       Ingrese usuario: " username
@@ -55,6 +55,7 @@ function isUserInDB(){
 		clear
 		#Showing connected user and changing to coloured username
         break;
+        playerManagement #Contains player submenu, input options and play method. 
     fi
 }
 
