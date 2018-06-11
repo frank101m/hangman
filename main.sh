@@ -18,7 +18,8 @@ function initGame(){
 			    while true;do
 				    login
 			    done
-			    #playerManagement #Contains player submenu, input options and play method. 
+       			#playerManagement #Contains player submenu, input options and play method.                     
+
 			    ;;
 		    "2")
 			    register #Available in res/register.sh

@@ -6,7 +6,6 @@ username=" "
 password=" "
 valid="abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ_."
 $currentState="loginState"
-
 # trap ctrl-c and call ctrl_c()
 trap ctrl_c INT
 
@@ -54,8 +53,8 @@ function isUserInDB(){
     else
 		clear
 		#Showing connected user and changing to coloured username
-        break;
         playerManagement #Contains player submenu, input options and play method. 
+        break
     fi
 }
 
