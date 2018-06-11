@@ -1,5 +1,7 @@
 #!/bin/bash
 
+. ./stroke_in.sh
+
 wordOptionInput="" #Global variable to manage option selected in word management
 currentWord=""
 

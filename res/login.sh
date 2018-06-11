@@ -1,10 +1,14 @@
 #!/bin/bash
+
+. ./stroke_in.sh
+
 username=" "
 password=" "
+valid="abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ_."
 
 function login(){
 	echo "==============================================="
-	read -p "	Ingrese su usuario: " username
+    read -p "       Ingrese usuario: " username
 	read -s -p "	Ingrese password: " password
 	printf "\n"
 	isUserInDB

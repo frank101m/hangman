@@ -92,11 +92,11 @@ function getPlayMenuOption(){
 
 function displayPlayerMenu(){
 	DATA[0]="================================================"
-    DATA[1]="          Seleccione una opcion"
-    DATA[2]="               (1) Administrar palabras"
-    DATA[3]="               (2) Jugar"
-    DATA[4]="               (3) Ver mis puntajes"
-    DATA[5]="               (4) Cerrar sesion"
+    DATA[1]="               (1) Administrar palabras"
+    DATA[2]="               (2) Jugar"
+    DATA[3]="               (3) Ver mis puntajes"
+    DATA[4]="               (4) Cerrar sesion"
+    DATA[5]="          Seleccione una opcion"
     
     printf '%s\n' "${DATA[@]}"
     unset DATA
