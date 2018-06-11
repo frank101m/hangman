@@ -68,7 +68,8 @@ function mainMenu(){
 function getMainMenuOption(){
 	#Validating input so that it works only with 1,2, or 3 keypresses.
 	while true; do
-		read -rsn1 mainOptionInput
+		read -rsn1 -p "	Seleccione una opcion: " mainOptionInput
+		printf "\n"
 		if [ "$mainOptionInput" = "1" ] || 
 			[ "$mainOptionInput" = "2" ] || 
 			[ "$mainOptionInput" = "3" ]; then
@@ -80,7 +81,8 @@ function getMainMenuOption(){
 function getPlayMenuOption(){
 	#Validating input so that it works only with 1,2, 3 or 4 keypresses.
 	while true; do
-		read -rsn1 playOptionInput
+		read -rsn1 -p "	Seleccione una opcion: " playOptionInput
+		printf "\n"
 		if [ "$playOptionInput" = "1" ] || 
 			[ "$playOptionInput" = "2" ] || 
 			[ "$playOptionInput" = "3" ] || 
@@ -91,15 +93,13 @@ function getPlayMenuOption(){
 }
 
 function displayPlayerMenu(){
-	DATA[0]="================================================"
-    DATA[1]="               (1) Administrar palabras"
-    DATA[2]="               (2) Jugar"
-    DATA[3]="               (3) Ver mis puntajes"
-    DATA[4]="               (4) Cerrar sesion"
-    DATA[5]="          Seleccione una opcion"
-    
-    printf '%s\n' "${DATA[@]}"
-    unset DATA
+	clear
+	printf "		BIENVENIDO \033[0;36m$username\033[0m\n"
+	printf "*******************************************************\n"
+    printf "               (1) Administrar palabras\n"
+    printf "               (2) Jugar\n"
+    printf "               (3) Ver mis puntajes\n"
+    printf "               (4) Cerrar sesion\n"
 }
 
 initGame
