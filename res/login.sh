@@ -33,7 +33,7 @@ function initLogin(){
 }
 
 function login(){
-    initLogin
+    #initLogin
     currentState="loginState"
 	printf "*******************************************************\n"
     read -p "       Ingrese usuario: " username

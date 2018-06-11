@@ -6,22 +6,23 @@ wordOptionInput="" #Global variable to manage option selected in word management
 currentWord=""
 
 function wordManagement(){
-    clear
-    printf "                ADMINISTRAR PALABRAS\n"
-    printf "*******************************************************\n"
-    printf "               (1) Agregar palabra  \n"
-    printf "               (2) Eliminar palabra \n"
-    printf "               (3) Regresar\n"
-    getWordOption
-
-    case $wordOptionInput in
-        "1")addWord
-            ;;
-        "2")deleteWord
-            ;;
-        "3")playerManagement
-            ;;
-    esac
+    while true; do
+        clear
+        printf "                ADMINISTRAR PALABRAS\n"
+        printf "*******************************************************\n"
+        printf "               (1) Agregar palabra  \n"
+        printf "               (2) Eliminar palabra \n"
+        printf "               (3) Regresar\n"
+        getWordOption
+        case $wordOptionInput in
+            "1")addWord
+                ;;
+            "2")deleteWord
+                ;;
+            "3")break;
+                ;;
+        esac
+    done
 }
 
 function addWord(){
@@ -34,7 +35,6 @@ function addWord(){
         printf "        \033[1;31mError al agregar la palabra. Contacte con soporte\033[0m\n"
     fi
     currentWord=""
-    playerManagement
 }
 
 function deleteWord(){
@@ -47,7 +47,6 @@ function deleteWord(){
     done
     printf "Ingrese el codigo de la palabra a borrar: \n"
     read -p ">" word
-    playerManagement
 }
 
 function getWordOption(){
