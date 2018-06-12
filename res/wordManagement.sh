@@ -41,13 +41,33 @@ function deleteWord(){
     clear
     printf "        LISTADO DE PALABRAS DEL USUARIO $username \n"
     printf "*******************************************************\n"
-    result=$(sudo -u postgres -H -- psql -d codigoabierto -c "SELECT * from palabra where usr='$username'" -t)
-    for line in $result; do
-        echo $line
-    done
+    sudo -u postgres -H -- psql -d codigoabierto -c "SELECT id_palabra,palabra,puntos from palabra where usr='Luis'" -t 2> /dev/null | tr '|' ' '
     printf "Ingrese el codigo de la palabra a borrar: \n"
-    read -p ">" word
+    read -p ">" idpalabra
+	isWordInDB $idpalabra
 }
+
+function isWordInDB(){
+    read -ra results <<< $(sudo -u postgres -H -- psql -d codigoabierto -c "SELECT * from palabra where id_palabra='$1';" -t 2> /dev/null)
+    word="" 
+    for piece in "${results[@]}"
+    do
+	    word+=$piece
+    done	
+    if [ -z $word ]; then
+        echo -e "	Palabra no encontrada\n"
+		sleep 1
+    else
+		#clear
+		#Showing connected user and changing to coloured username
+        #playerManagement #Contains player submenu, input options and play method. 
+		echo -e "	Palabra encontrada\n"
+		sudo -u postgres -H -- psql -d codigoabierto -c "DELETE from palabra where id_palabra='$1';" -t 2> /dev/null
+		sleep 1
+        #break
+    fi
+}
+
 
 function getWordOption(){
     #Validating input so that it works only with 1, 2 or 3 keypresses.

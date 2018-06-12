@@ -42,7 +42,7 @@ function login(){
 }
 
 function isUserInDB(){
-    read -ra results <<< $(sudo -u postgres -H -- psql -d codigoabierto -c "SELECT * from login where usr='$username' and pwd='$password'" -t)
+    read -ra results <<< $(sudo -u postgres -H -- psql -d codigoabierto -c "SELECT * from login where usr='$username' and pwd='$password';" -t)
     user="" 
     for piece in "${results[@]}"
     do
