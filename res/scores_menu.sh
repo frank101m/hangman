@@ -48,7 +48,7 @@ function get_scores_option()
 
 function display_scores_desc()
 {
-  sudo -u postgres -H -- psql -d codigoabierto -c "SELECT usr as usuario, puntaje FROM puntaje WHERE usr = '$username' ORDER BY puntaje DESC;"
+  sudo -u postgres -H -- psql -d codigoabierto -c "SELECT usr as usuario, puntaje FROM puntaje WHERE usr = '$username' ORDER BY puntaje DESC;" | head -n -2
 #SELECT * FROM puntaje WHERE usr = '$usr' ORDER BY puntaje DESC;
   echo  "Presione una tecla para continuar"
   read -n1  
@@ -58,7 +58,7 @@ function display_scores_desc()
 
 function display_scores_time()
 {
-  sudo -u postgres -H -- psql -d codigoabierto -c "SELECT usr as usuario, puntaje, fecha FROM puntaje WHERE usr = '$username' ORDER BY fecha DESC;"
+  sudo -u postgres -H -- psql -d codigoabierto -c "SELECT usr as usuario, puntaje, fecha::date FROM puntaje WHERE usr = '$username' ORDER BY fecha DESC;" | head -n -2
 #SELECT * FROM puntaje WHERE usr = '$usr' ORDER BY puntaje DESC;
   echo  "Presione una tecla para continuar"
   read -n1  
@@ -70,7 +70,7 @@ function display_scores_time()
 
 function display_scores_global()
 {
-  sudo -u postgres -H -- psql -d codigoabierto -c "SELECT usr as usuario, puntaje FROM puntaje ORDER BY puntaje DESC;"
+  sudo -u postgres -H -- psql -d codigoabierto -c "SELECT usr as usuario, puntaje FROM puntaje ORDER BY puntaje DESC;" | head -n -2
 #SELECT * FROM puntaje WHERE usr = '$usr' ORDER BY puntaje DESC;
   echo  "Presione una tecla para continuar"
   read -n1  
