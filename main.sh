@@ -3,6 +3,7 @@ export currentState="menuState"
 . ./res/login.sh
 . ./res/register.sh
 . ./res/wordManagement.sh
+. ./res/scores_menu.sh
 . ./res/logo.txt
 . ./res/hangmanProp.txt
 
@@ -41,8 +42,9 @@ function playerManagement(){
 			;;
 		"2") echo "PLAY METHODS SHOULD BE HERE"
 			;;
-		"3") echo "SCORE METHODS SHOULD BE HERE"
-			;;
+		"3")show_scores_menu
+      playerManagement
+       ;;
 		"4")clearSession
 			clearGlobalVariables
 			initGame
@@ -108,3 +110,5 @@ function displayPlayerMenu(){
 }
 
 initGame
+
+export -f playerManagement
