@@ -17,7 +17,8 @@ function addUser(){
         printf "!BIENVENIDO!. Registro realizado correctamente\n"
     else
         printf "Error al registrar usuario. Contacte con soporte"
-        break;
+        sleep 2
+        #break;
     fi
 }
 
