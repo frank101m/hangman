@@ -1,2 +1,0 @@
-sudo apt install sox
-sudo apt install postgresql
