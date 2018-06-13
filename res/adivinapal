@@ -1,0 +1,30 @@
+.\" Manpage for adivinapal.
+.\" Contact 00001014@uca.edu.sv to correct errors or typos.
+.TH ADIVINAPAL 6 "12 Jun 2018" "1.0" " adivinapal man page"
+.SH NAME
+adivinapal \- console based hangman game
+.SH SYNOPSIS
+adivinapal
+.SH DESCRIPTION
+.B adivinalpal 
+is the classic word-guessing hangman game to be played in console.
+.B adivinapal 
+searches trough a list of words and randomly chooses one to play. 
+A single game round could show as many words as the player desires.
+Player must guess all the characters that make up every word to be shown another one and to get a higher global score.
+.LP
+In order to play you must sign up as a player with the desired username and password, using these to login afterwards. To register choose option 2 showed in the main menu.
+.SH OPTIONS
+adivinapal does not take any options.
+.SH SEE ALSO
+Full documentation at <https://github.com/frank101m/hangman>
+.SH BUGS
+Player is taken to main menu after a game round.
+.SH AUTHOR
+Luis De Paz (00001014@uca.edu.sv)
+.LP
+Jonathan Duenas (00014314@uca.edu.sv)
+.LP
+Gabriel Garcia (00047914@uca.edu.sv)
+.LP
+Francisco Perez (00356315@uca.edu.sv)
