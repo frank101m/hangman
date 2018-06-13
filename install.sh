@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 databasename="codigoabierto"
 package1="postgresql"
@@ -6,13 +6,13 @@ package2="sox"
 
 if [ $(dpkg-query -W -f='${Status}' postgresql 2>/dev/null | grep -c "ok installed") -eq 0 ];
 then
-  echo "Installing..."
+  echo "Installing pkg1..."
   sudo apt install $package1;
 fi
 
 if [ $(dpkg-query -W -f='${Status}' sox 2>/dev/null | grep -c "ok installed") -eq 0 ];
 then
-  echo "Installing..."
+  echo "Installing pkg1..."
   sudo apt install $package2;
 fi
 
@@ -21,6 +21,7 @@ then
     echo "Database ready"
 else
     echo "Installing Database"
-	#add command for installation
+	sudo -u postgres createdb codigoabierto
+	sudo -u postgres psql codigoabierto < preconfig/codigoabierto.sql
 fi
-echo "Already installed"
+echo "All installed"
