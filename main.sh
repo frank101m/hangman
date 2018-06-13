@@ -6,6 +6,7 @@ export currentState="menuState"
 . ./res/scores_menu.sh
 . ./res/logo.txt
 . ./res/hangmanProp.txt
+. ./res/stroke_in.sh
 
 mainOptionInput=""
 playOptionInput=""
@@ -40,7 +41,7 @@ function playerManagement(){
 	case $playOptionInput in
 		"1")wordManagement #Go to wordManagement.sh
 			;;
-		"2") echo "PLAY METHODS SHOULD BE HERE"
+		"2") beginGame 0
 			;;
 		"3")show_scores_menu
       playerManagement

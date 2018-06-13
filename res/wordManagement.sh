@@ -41,7 +41,7 @@ function deleteWord(){
     clear
     printf "        LISTADO DE PALABRAS DEL USUARIO $username \n"
     printf "*******************************************************\n"
-    sudo -u postgres -H -- psql -d codigoabierto -c "SELECT id_palabra,palabra,puntos from palabra where usr='Luis'" -t 2> /dev/null | tr '|' ' '
+    sudo -u postgres -H -- psql -d codigoabierto -c "SELECT id_palabra,palabra,puntos from palabra where usr='$username'" -t 2> /dev/null | tr '|' ' '
     printf "Ingrese el codigo de la palabra a borrar: \n"
     read -p ">" idpalabra
 	isWordInDB $idpalabra
