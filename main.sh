@@ -36,21 +36,23 @@ function initGame(){
 
 #Contains player submenu, input options and play method 
 function playerManagement(){
-	displayPlayerMenu
-	getPlayMenuOption
-	case $playOptionInput in
-		"1")wordManagement #Go to wordManagement.sh
-			;;
-		"2") beginGame 0
-			;;
-		"3")show_scores_menu
-      playerManagement
-       ;;
-		"4")clearSession
-			clearGlobalVariables
-			initGame
-			;;
-	esac
+	while true; do
+		displayPlayerMenu
+		getPlayMenuOption
+		case $playOptionInput in
+			"1")wordManagement #Go to wordManagement.sh
+				;;
+			"2") beginGame 0
+				;;
+			"3")show_scores_menu
+		  playerManagement
+		   ;;
+			"4")clearSession
+				clearGlobalVariables
+				initGame
+				;;
+		esac
+	done
 }
 
 #Clear global variables related to user
