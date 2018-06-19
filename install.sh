@@ -7,13 +7,13 @@ package2="sox"
 if [ $(dpkg-query -W -f='${Status}' postgresql 2>/dev/null | grep -c "ok installed") -eq 0 ];
 then
   echo "Installing pkg1..."
-  sudo apt --yes --force-yes install $package1;
+  sudo apt-get --yes --force-yes install $package1;
 fi
 
 if [ $(dpkg-query -W -f='${Status}' sox 2>/dev/null | grep -c "ok installed") -eq 0 ];
 then
   echo "Installing pkg2..."
-  sudo apt --yes --force-yes install $package2;
+  sudo apt-get --yes --force-yes install $package2;
 fi
 
 if sudo -u postgres psql -lqt | cut -d \| -f 1 | grep -qw $databasename;
